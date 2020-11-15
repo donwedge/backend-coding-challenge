@@ -1,0 +1,4 @@
+--INSERT INTO  product(id,description,price) VALUES("photobook-square-soft-cover", "Photobook Square with Soft Cover", 25.0));
+--INSERT INTO  product(id,description,price) VALUES("photobook-square-hard-cover", "Photobook Square with Hard Cover", 30.0));
+--INSERT INTO  product(id,description,price) VALUES("photobook-landscape-soft-cover", "Photobook Landscape with Soft Cover", 35.0));
+--INSERT INTO  product(id,description,price) VALUES("photobook-landscape-hard-cover", "Photobook Landscape with Hard Cover", 45.0));

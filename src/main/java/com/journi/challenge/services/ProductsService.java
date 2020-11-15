@@ -12,17 +12,14 @@ import java.util.stream.Collectors;
 //Using Service to make use of the autowiring to the sql repo
 @Service
 public class ProductsService {
-    //    private List<Product> allProducts = new ArrayList<>();
-//    {
-//        allProducts.add(new Product("photobook-square-soft-cover", "Photobook Square with Soft Cover", 25.0));
-//        allProducts.add(new Product("photobook-square-hard-cover", "Photobook Square with Hard Cover", 30.0));
-//        allProducts.add(new Product("photobook-landscape-soft-cover", "Photobook Landscape with Soft Cover", 35.0));
-//        allProducts.add(new Product("photobook-landscape-hard-cover", "Photobook Landscape with Hard Cover", 45.0));
-//    }
     @Autowired
     private ProductRepository productRepository;
-    @Autowired
-    private CurrencyConverter currencyConverter;
+
+    private CurrencyConverter currencyConverter = new CurrencyConverter();
+
+    public void saveAll(List<Product> allProducts) {
+        this.productRepository.saveAll(allProducts);
+    }
 
     public List<Product> list(String currencyCode) {
         String currency = this.currencyConverter.getCurrencyForCountryCode(currencyCode);

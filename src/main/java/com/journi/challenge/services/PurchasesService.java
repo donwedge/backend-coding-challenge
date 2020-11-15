@@ -19,8 +19,8 @@ public class PurchasesService {
 
     @Autowired
     private PurchaseRepository purchaseRepository;
-    @Autowired
-    private CurrencyConverter currencyConverter;
+
+    private CurrencyConverter currencyConverter = new CurrencyConverter();
 
     public List<Purchase> list() {
         return this.purchaseRepository.findAll();
