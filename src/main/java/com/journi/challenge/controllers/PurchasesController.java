@@ -7,9 +7,6 @@ import com.journi.challenge.services.PurchasesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-
 @RestController
 public class PurchasesController {
 
@@ -25,15 +22,6 @@ public class PurchasesController {
     @PostMapping("/purchases")
     @ResponseBody
     public Purchase save(@RequestBody PurchaseRequest purchaseRequest) {
-        Purchase newPurchase = new Purchase(
-                purchaseRequest.getInvoiceNumber(),
-                LocalDateTime.parse(purchaseRequest.getDateTime(), DateTimeFormatter.ISO_DATE_TIME),
-                purchaseRequest.getProductIds(),
-                purchaseRequest.getCustomerName(),
-                purchaseRequest.getAmount(),
-                purchaseRequest.getCurrencyCode()
-        );
-        purchasesService.save(newPurchase);
-        return newPurchase;
+        return purchasesService.save(purchaseRequest);
     }
 }

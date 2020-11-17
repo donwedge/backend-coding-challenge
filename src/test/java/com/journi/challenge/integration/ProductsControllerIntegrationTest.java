@@ -28,9 +28,6 @@ public class ProductsControllerIntegrationTest {
     @Autowired
     private MockMvc mockMvc;
 
-//    @Autowired
-//    private static ProductsService productsService;
-
     @Value("${server.port}")
     private String serverPort;
 
@@ -40,14 +37,6 @@ public class ProductsControllerIntegrationTest {
 
     private TestRestTemplate testRestTemplate = new TestRestTemplate();
     private CurrencyConverter currencyConverter = new CurrencyConverter();
-
-    @Test
-    void testApplication() {
-
-
-        ResponseEntity<List> response = testRestTemplate.getForEntity(this.getFullUrl() + "/products", List.class);
-        System.out.println(response);
-    }
 
     @BeforeAll
     private static void preLoadProducts(@Autowired ProductsService productsService) {

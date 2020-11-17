@@ -1,6 +1,7 @@
 package com.journi.challenge.models;
 
 import javax.persistence.*;
+import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,21 +19,25 @@ import java.util.List;
 public class Purchase {
     @Id
     @Column(name = "invoiceNumber", unique = true)
-    private final String invoiceNumber;
+    private String invoiceNumber;
 
-    private final LocalDateTime timestamp;
+    //    @Convert(converter = LocalDateTimeConverter.class)
+    private Timestamp timestamp;
 
     @OneToMany
-    private final List<PurchaseItems> productIds;
+    private List<PurchaseItems> productIds;
 
-    private final String customerName;
-    private final String currencyCode;
+    private String customerName;
+    private String currencyCode;
     private Double totalValue;
+
+    public Purchase() {
+    }
 
     public Purchase(String invoiceNumber, LocalDateTime timestamp, List<String> productIds, String customerName,
                     Double totalValue, String currencyCode) {
         this.invoiceNumber = invoiceNumber;
-        this.timestamp = timestamp;
+        this.timestamp = Timestamp.valueOf(timestamp);
         this.customerName = customerName;
         this.totalValue = totalValue;
         this.currencyCode = currencyCode;
@@ -41,24 +46,48 @@ public class Purchase {
         this.productIds = purchaseItems;
     }
 
-    public String getCurrencyCode() {
-        return this.currencyCode;
-    }
-
     public String getInvoiceNumber() {
         return invoiceNumber;
     }
 
-    public LocalDateTime getTimestamp() {
+    public void setInvoiceNumber(String invoiceNumber) {
+        this.invoiceNumber = invoiceNumber;
+    }
+
+    public Timestamp getTimestamp() {
         return timestamp;
+    }
+
+    public void setTimestamp(Timestamp timestamp) {
+        this.timestamp = timestamp;
+    }
+
+    public void setTimestamp(LocalDateTime timestamp) {
+        this.timestamp = Timestamp.valueOf(timestamp);
     }
 
     public List<PurchaseItems> getProductIds() {
         return productIds;
     }
 
+    public void setProductIds(List<PurchaseItems> productIds) {
+        this.productIds = productIds;
+    }
+
     public String getCustomerName() {
         return customerName;
+    }
+
+    public void setCustomerName(String customerName) {
+        this.customerName = customerName;
+    }
+
+    public String getCurrencyCode() {
+        return currencyCode;
+    }
+
+    public void setCurrencyCode(String currencyCode) {
+        this.currencyCode = currencyCode;
     }
 
     public Double getTotalValue() {
