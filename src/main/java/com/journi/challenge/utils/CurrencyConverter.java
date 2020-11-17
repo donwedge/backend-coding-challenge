@@ -27,6 +27,7 @@ public class CurrencyConverter {
         this.supportedCountriesCurrency.put("BR", "BRL");
         this.supportedCountriesCurrency.put("US", "USD");
         this.supportedCountriesCurrency.put("CA", "CAD");
+        this.supportedCountriesCurrency.put("ZA", "ZAR");
 
         this.currencyEurRate = new HashMap<>();
         try {

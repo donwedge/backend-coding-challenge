@@ -1,6 +1,9 @@
 package com.journi.challenge.models;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 /**
  * Represents a Product the company can sell.
@@ -12,7 +15,6 @@ import javax.persistence.*;
 public class Product {
     @Id
     @Column(name = "id")
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private String id;
 
     private String description;
